@@ -11,7 +11,7 @@ export function ProgressBar({
 }) {
   const pct = Math.min(100, Math.max(0, value))
   return (
-    <div className={`w-full overflow-hidden rounded-full ${trackClassName} ${height}`}>
+    <div className={`flex w-full overflow-hidden rounded-full ${trackClassName} ${height}`}>
       <div
         className={`${height} rounded-full ${colorClassName} transition-[width] duration-500 ease-out`}
         style={{ width: `${pct}%` }}

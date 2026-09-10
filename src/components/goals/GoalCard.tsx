@@ -26,7 +26,7 @@ export function GoalCard({
         </div>
         <button
           onClick={onRemove}
-          aria-label="Delete goal"
+          aria-label="حذف الهدف"
           className="shrink-0 rounded-lg p-1.5 text-slate-300 active:text-rose-500 dark:text-slate-600"
         >
           <Trash2 size={15} />
@@ -37,19 +37,19 @@ export function GoalCard({
 
       <div className="mt-3 flex items-center justify-between">
         <span className={`text-sm font-bold ${complete ? 'text-emerald-500' : 'text-slate-900 dark:text-white'}`}>
-          {complete ? 'Complete 🎉' : `${pct}%`}
+          {complete ? 'مكتمل 🎉' : `${pct}%`}
         </span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => onBump(-1)}
-            aria-label="Decrease progress"
+            aria-label="إنقاص التقدم"
             className="flex size-8 items-center justify-center rounded-full bg-slate-100 text-slate-600 active:scale-95 dark:bg-white/10 dark:text-slate-300"
           >
             <Minus size={16} />
           </button>
           <button
             onClick={() => onBump(1)}
-            aria-label="Increase progress"
+            aria-label="زيادة التقدم"
             className="flex size-8 items-center justify-center rounded-full bg-indigo-500 text-white active:scale-95"
           >
             <Plus size={16} />

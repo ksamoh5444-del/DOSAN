@@ -4,11 +4,11 @@ import { useMood } from '../../hooks/useMood'
 import type { Mood } from '../../types'
 
 const MOODS: { value: Mood; emoji: string; label: string }[] = [
-  { value: 1, emoji: '😞', label: 'Awful' },
-  { value: 2, emoji: '😕', label: 'Low' },
-  { value: 3, emoji: '😐', label: 'Okay' },
-  { value: 4, emoji: '🙂', label: 'Good' },
-  { value: 5, emoji: '😄', label: 'Great' },
+  { value: 1, emoji: '😞', label: 'سيئ جدًا' },
+  { value: 2, emoji: '😕', label: 'سيئ' },
+  { value: 3, emoji: '😐', label: 'عادي' },
+  { value: 4, emoji: '🙂', label: 'جيد' },
+  { value: 5, emoji: '😄', label: 'ممتاز' },
 ]
 
 export function MoodTracker() {
@@ -17,7 +17,7 @@ export function MoodTracker() {
 
   return (
     <Card>
-      <p className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">How are you feeling today?</p>
+      <p className="mb-3 text-sm font-semibold text-slate-900 dark:text-white">كيف تشعر اليوم؟</p>
       <div className="flex justify-between">
         {MOODS.map((m) => (
           <button
@@ -46,7 +46,7 @@ export function MoodTracker() {
             setNote(e.target.value)
             logMood(todayEntry.mood, e.target.value)
           }}
-          placeholder="Add a quick note (optional)"
+          placeholder="أضف ملاحظة سريعة (اختياري)"
           className="mt-4 w-full rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-sm text-slate-900 outline-none focus:border-indigo-400 dark:border-white/10 dark:bg-white/5 dark:text-white"
         />
       )}

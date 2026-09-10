@@ -7,6 +7,12 @@ const PRIORITY_STYLES: Record<Task['priority'], string> = {
   low: 'bg-emerald-500/10 text-emerald-500',
 }
 
+const PRIORITY_LABELS: Record<Task['priority'], string> = {
+  high: 'مرتفعة',
+  medium: 'متوسطة',
+  low: 'منخفضة',
+}
+
 export function TaskItem({
   task,
   onToggle,
@@ -20,7 +26,7 @@ export function TaskItem({
     <div className="flex items-center gap-3 rounded-xl border border-slate-200/70 bg-white p-3 dark:border-white/10 dark:bg-slate-900">
       <button
         onClick={onToggle}
-        aria-label={task.done ? 'Mark as pending' : 'Mark as done'}
+        aria-label={task.done ? 'وضع كمعلّقة' : 'وضع كمكتملة'}
         className={`flex size-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
           task.done
             ? 'border-indigo-500 bg-indigo-500 text-white'
@@ -39,12 +45,17 @@ export function TaskItem({
           {task.title}
         </p>
         <div className="mt-1 flex items-center gap-2">
-          <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase ${PRIORITY_STYLES[task.priority]}`}>
-            {task.priority}
+          <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${PRIORITY_STYLES[task.priority]}`}>
+            {PRIORITY_LABELS[task.priority]}
           </span>
           {task.dueDate && (
             <span className="text-[11px] text-slate-400 dark:text-slate-500">
-              Due {new Date(`${task.dueDate}T00:00:00`).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}
+              الاستحقاق{' '}
+              {new Date(`${task.dueDate}T00:00:00`).toLocaleDateString('ar', {
+                month: 'short',
+                day: 'numeric',
+                numberingSystem: 'latn',
+              })}
             </span>
           )}
         </div>
@@ -52,7 +63,7 @@ export function TaskItem({
 
       <button
         onClick={onRemove}
-        aria-label="Delete task"
+        aria-label="حذف المهمة"
         className="shrink-0 rounded-lg p-2 text-slate-300 active:bg-rose-50 active:text-rose-500 dark:text-slate-600 dark:active:bg-rose-500/10"
       >
         <Trash2 size={16} />

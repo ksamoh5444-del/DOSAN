@@ -11,6 +11,8 @@ import type { ThemeMode } from '../hooks/useTheme'
 
 type Filter = 'all' | 'pending' | 'done'
 
+const FILTER_LABELS: Record<Filter, string> = { all: 'الكل', pending: 'قيد الانتظار', done: 'مكتملة' }
+
 export function TasksPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; onToggleTheme: () => void }) {
   const { tasks, addTask, toggleTask, removeTask, clearCompleted } = useTasks()
   const [filter, setFilter] = useState<Filter>('all')
@@ -28,7 +30,7 @@ export function TasksPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
 
   return (
     <>
-      <Header title="Tasks" subtitle="Plan your day" themeMode={themeMode} onToggleTheme={onToggleTheme} />
+      <Header title="المهام" subtitle="خطط يومك" themeMode={themeMode} onToggleTheme={onToggleTheme} />
       <PageContainer withFab>
         <Card className="mb-5">
           <div className="flex items-center justify-between">
@@ -36,7 +38,7 @@ export function TasksPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
               <p className="text-2xl font-bold text-slate-900 dark:text-white">
                 {doneCount}/{total}
               </p>
-              <p className="text-xs text-slate-500 dark:text-slate-400">tasks completed today</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">مهام مكتملة اليوم</p>
             </div>
             <p className="text-2xl font-bold text-indigo-500">{pct}%</p>
           </div>
@@ -50,21 +52,21 @@ export function TasksPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`rounded-full px-3.5 py-1.5 text-xs font-medium capitalize transition-colors ${
+              className={`rounded-full px-3.5 py-1.5 text-xs font-medium transition-colors ${
                 filter === f
                   ? 'bg-indigo-500 text-white'
                   : 'bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-slate-300'
               }`}
             >
-              {f}
+              {FILTER_LABELS[f]}
             </button>
           ))}
           {doneCount > 0 && (
             <button
               onClick={clearCompleted}
-              className="ml-auto text-xs font-medium text-slate-400 underline-offset-2 active:underline"
+              className="ms-auto text-xs font-medium text-slate-400 underline-offset-2 active:underline"
             >
-              Clear done
+              مسح المكتملة
             </button>
           )}
         </div>
@@ -72,7 +74,7 @@ export function TasksPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
         <div className="space-y-2">
           {filtered.length === 0 && (
             <p className="py-10 text-center text-sm text-slate-400 dark:text-slate-500">
-              {tasks.length === 0 ? 'No tasks yet. Tap + to add one.' : 'Nothing here.'}
+              {tasks.length === 0 ? 'لا توجد مهام بعد. اضغط + لإضافة واحدة.' : 'لا يوجد شيء هنا.'}
             </p>
           )}
           {filtered.map((task) => (
@@ -81,7 +83,7 @@ export function TasksPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
         </div>
       </PageContainer>
 
-      <Fab onClick={() => setSheetOpen(true)} label="Add task" />
+      <Fab onClick={() => setSheetOpen(true)} label="إضافة مهمة" />
       <AddTaskSheet open={sheetOpen} onClose={() => setSheetOpen(false)} onAdd={addTask} />
     </>
   )

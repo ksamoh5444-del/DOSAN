@@ -17,7 +17,7 @@ export function MoodTrendChart({ entries }: { entries: MoodEntry[] }) {
   if (!hasData) {
     return (
       <div className="flex h-28 items-center justify-center text-sm text-slate-400 dark:text-slate-500">
-        Log your mood to see trends
+        سجل مزاجك لرؤية الاتجاهات
       </div>
     )
   }

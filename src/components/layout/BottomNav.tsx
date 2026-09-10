@@ -2,11 +2,11 @@ import { CheckSquare, Home, Target, Wallet, Sparkles } from 'lucide-react'
 import type { Page } from '../../App'
 
 const ITEMS: { key: Page; label: string; icon: typeof Home }[] = [
-  { key: 'home', label: 'Home', icon: Home },
-  { key: 'tasks', label: 'Tasks', icon: CheckSquare },
-  { key: 'money', label: 'Money', icon: Wallet },
-  { key: 'goals', label: 'Goals', icon: Target },
-  { key: 'wellness', label: 'Wellness', icon: Sparkles },
+  { key: 'home', label: 'الرئيسية', icon: Home },
+  { key: 'tasks', label: 'المهام', icon: CheckSquare },
+  { key: 'money', label: 'المصروفات', icon: Wallet },
+  { key: 'goals', label: 'الأهداف', icon: Target },
+  { key: 'wellness', label: 'الصحة', icon: Sparkles },
 ]
 
 export function BottomNav({ page, onChange }: { page: Page; onChange: (p: Page) => void }) {

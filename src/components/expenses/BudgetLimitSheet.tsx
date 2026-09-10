@@ -22,7 +22,7 @@ export function BudgetLimitSheet({
   }
 
   return (
-    <Sheet open={open} onClose={onClose} title="Monthly Budget Limit">
+    <Sheet open={open} onClose={onClose} title="الحد الشهري للميزانية">
       <div className="space-y-4">
         <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 focus-within:border-indigo-400 dark:border-white/10 dark:bg-white/5">
           <span className="text-lg font-semibold text-slate-400">$</span>
@@ -35,7 +35,7 @@ export function BudgetLimitSheet({
           />
         </div>
         <button onClick={submit} className="w-full rounded-xl bg-indigo-500 py-3 text-sm font-semibold text-white">
-          Save Limit
+          حفظ الحد
         </button>
       </div>
     </Sheet>

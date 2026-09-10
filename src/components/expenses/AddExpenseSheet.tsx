@@ -12,7 +12,7 @@ export function AddExpenseSheet({
   onAdd: (amount: number, category: ExpenseCategory, note: string) => void
 }) {
   const [amount, setAmount] = useState('')
-  const [category, setCategory] = useState<ExpenseCategory>('Food')
+  const [category, setCategory] = useState<ExpenseCategory>('طعام')
   const [note, setNote] = useState('')
 
   const submit = () => {
@@ -21,15 +21,15 @@ export function AddExpenseSheet({
     onAdd(value, category, note)
     setAmount('')
     setNote('')
-    setCategory('Food')
+    setCategory('طعام')
     onClose()
   }
 
   return (
-    <Sheet open={open} onClose={onClose} title="Log Expense">
+    <Sheet open={open} onClose={onClose} title="تسجيل مصروف">
       <div className="space-y-4">
         <div>
-          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Amount</p>
+          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">المبلغ</p>
           <div className="flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 focus-within:border-indigo-400 dark:border-white/10 dark:bg-white/5">
             <span className="text-lg font-semibold text-slate-400">$</span>
             <input
@@ -44,7 +44,7 @@ export function AddExpenseSheet({
         </div>
 
         <div>
-          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Category</p>
+          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">الفئة</p>
           <div className="flex flex-wrap gap-2">
             {EXPENSE_CATEGORIES.map((c) => (
               <button
@@ -63,11 +63,11 @@ export function AddExpenseSheet({
         </div>
 
         <div>
-          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Note (optional)</p>
+          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">ملاحظة (اختياري)</p>
           <input
             value={note}
             onChange={(e) => setNote(e.target.value)}
-            placeholder="e.g. Coffee with friends"
+            placeholder="مثال: قهوة مع الأصدقاء"
             className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-400 dark:border-white/10 dark:bg-white/5 dark:text-white"
           />
         </div>
@@ -77,7 +77,7 @@ export function AddExpenseSheet({
           disabled={!amount || parseFloat(amount) <= 0}
           className="w-full rounded-xl bg-indigo-500 py-3 text-sm font-semibold text-white disabled:opacity-40"
         >
-          Add Expense
+          إضافة المصروف
         </button>
       </div>
     </Sheet>

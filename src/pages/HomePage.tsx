@@ -42,20 +42,20 @@ export function HomePage({
 
   const greeting = (() => {
     const h = new Date().getHours()
-    if (h < 12) return 'Good morning'
-    if (h < 18) return 'Good afternoon'
-    return 'Good evening'
+    if (h < 12) return 'صباح الخير'
+    if (h < 18) return 'طاب يومك'
+    return 'مساء الخير'
   })()
 
   return (
     <>
-      <Header title={greeting} subtitle="Here's your day at a glance" themeMode={themeMode} onToggleTheme={onToggleTheme} />
+      <Header title={greeting} subtitle="نظرة سريعة على يومك" themeMode={themeMode} onToggleTheme={onToggleTheme} />
       <PageContainer>
         <div className="mb-5 grid grid-cols-2 gap-3">
           <Card onClick={() => onNavigate('tasks')}>
             <div className="mb-2 flex items-center gap-2 text-indigo-500">
               <CheckSquare size={16} />
-              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Tasks</span>
+              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">المهام</span>
             </div>
             <p className="text-xl font-bold text-slate-900 dark:text-white">
               {doneCount}/{tasks.length}
@@ -66,7 +66,7 @@ export function HomePage({
           <Card onClick={() => onNavigate('money')}>
             <div className="mb-2 flex items-center gap-2 text-indigo-500">
               <Wallet size={16} />
-              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Budget</span>
+              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">الميزانية</span>
             </div>
             <p className="text-xl font-bold text-slate-900 dark:text-white">{formatCurrency(spent)}</p>
             <ProgressBar value={budgetPct} height="h-1.5" colorClassName={budgetPct > 100 ? 'bg-rose-500' : 'bg-indigo-500'} />
@@ -75,18 +75,18 @@ export function HomePage({
           <Card onClick={() => onNavigate('goals')}>
             <div className="mb-2 flex items-center gap-2 text-indigo-500">
               <Target size={16} />
-              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Goals</span>
+              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">الأهداف</span>
             </div>
             <p className="text-xl font-bold text-slate-900 dark:text-white">
               {goalsComplete}/{goals.length}
             </p>
-            <p className="text-[11px] text-slate-400 dark:text-slate-500">completed</p>
+            <p className="text-[11px] text-slate-400 dark:text-slate-500">مكتمل</p>
           </Card>
 
           <Card onClick={() => onNavigate('wellness')}>
             <div className="mb-2 flex items-center gap-2 text-sky-500">
               <Droplet size={16} />
-              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Water</span>
+              <span className="text-xs font-medium text-slate-500 dark:text-slate-400">الماء</span>
             </div>
             <p className="text-xl font-bold text-slate-900 dark:text-white">
               {glasses}/{waterTarget}
@@ -95,29 +95,29 @@ export function HomePage({
           </Card>
         </div>
 
-        <SectionHeader title="Today's mood" />
+        <SectionHeader title="مزاج اليوم" />
         <Card className="mb-5" onClick={() => onNavigate('wellness')}>
           <div className="flex items-center gap-3">
             <span className="text-3xl">{todayEntry ? MOOD_EMOJI[todayEntry.mood] : '❔'}</span>
             <div>
               <p className="text-sm font-medium text-slate-900 dark:text-white">
-                {todayEntry ? 'Logged for today' : 'Not logged yet'}
+                {todayEntry ? 'تم التسجيل اليوم' : 'لم يُسجّل بعد'}
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                {todayEntry?.note || 'Tap to check in'}
+                {todayEntry?.note || 'اضغط للتسجيل'}
               </p>
             </div>
-            <div className="flex items-center gap-2 ml-auto text-slate-300 dark:text-slate-600">
+            <div className="flex items-center gap-2 ms-auto text-slate-300 dark:text-slate-600">
               <Smile size={18} />
             </div>
           </div>
         </Card>
 
-        <SectionHeader title="Up next" />
+        <SectionHeader title="القادم" />
         <div className="space-y-2">
           {tasks.filter((t) => !t.done).length === 0 && (
             <p className="py-6 text-center text-sm text-slate-400 dark:text-slate-500">
-              All caught up — nothing pending.
+              كل شيء تم — لا توجد مهام معلقة.
             </p>
           )}
           {tasks

@@ -18,25 +18,25 @@ export function GoalsPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
 
   return (
     <>
-      <Header title="Goals" subtitle="Build better habits" themeMode={themeMode} onToggleTheme={onToggleTheme} />
+      <Header title="الأهداف" subtitle="ابنِ عادات أفضل" themeMode={themeMode} onToggleTheme={onToggleTheme} />
       <PageContainer withFab>
         {goals.length > 0 && (
           <Card className="mb-5">
             <div className="mb-3 flex items-center justify-between">
               <p className="text-sm text-slate-500 dark:text-slate-400">
                 <span className="text-xl font-bold text-slate-900 dark:text-white">{completed}</span>/{goals.length}{' '}
-                goals complete
+                هدف مكتمل
               </p>
             </div>
             <GoalsOverviewChart goals={goals} />
           </Card>
         )}
 
-        <SectionHeader title="Your goals" />
+        <SectionHeader title="أهدافك" />
         <div className="space-y-3">
           {goals.length === 0 && (
             <p className="py-10 text-center text-sm text-slate-400 dark:text-slate-500">
-              No goals yet. Tap + to start tracking one.
+              لا توجد أهداف بعد. اضغط + للبدء بتتبع هدف.
             </p>
           )}
           {goals.map((goal) => (
@@ -50,7 +50,7 @@ export function GoalsPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
         </div>
       </PageContainer>
 
-      <Fab onClick={() => setOpen(true)} label="Add goal" />
+      <Fab onClick={() => setOpen(true)} label="إضافة هدف" />
       <AddGoalSheet open={open} onClose={() => setOpen(false)} onAdd={addGoal} />
     </>
   )

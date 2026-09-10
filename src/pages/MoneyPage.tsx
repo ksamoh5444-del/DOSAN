@@ -28,44 +28,44 @@ export function MoneyPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
 
   return (
     <>
-      <Header title="Money" subtitle="Budget & spending" themeMode={themeMode} onToggleTheme={onToggleTheme} />
+      <Header title="المصروفات" subtitle="الميزانية والمصروفات" themeMode={themeMode} onToggleTheme={onToggleTheme} />
       <PageContainer withFab>
         <Card className="mb-5">
           <div className="mb-3 flex items-start justify-between">
             <div>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Spent this month</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">الصرف هذا الشهر</p>
               <p className="text-2xl font-bold text-slate-900 dark:text-white">{formatCurrency(spent)}</p>
             </div>
             <button
               onClick={() => setLimitOpen(true)}
               className="flex items-center gap-1 rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-500 dark:bg-white/5 dark:text-slate-400"
             >
-              <Pencil size={11} /> {formatCurrency(budget.monthlyLimit)} limit
+              <Pencil size={11} /> الحد {formatCurrency(budget.monthlyLimit)}
             </button>
           </div>
           <ProgressBar value={pct} colorClassName={overBudget ? 'bg-rose-500' : 'bg-indigo-500'} />
           <p className={`mt-2 text-xs ${overBudget ? 'text-rose-500' : 'text-slate-500 dark:text-slate-400'}`}>
             {overBudget
-              ? `${formatCurrency(Math.abs(remaining))} over budget`
-              : `${formatCurrency(remaining)} remaining · ${pct}% used`}
+              ? `تجاوزت الميزانية بمقدار ${formatCurrency(Math.abs(remaining))}`
+              : `متبقٍ ${formatCurrency(remaining)} · ${pct}% مستخدم`}
           </p>
         </Card>
 
         <Card className="mb-5">
-          <SectionHeader title="Last 7 days" />
+          <SectionHeader title="آخر 7 أيام" />
           <SpendingTrendChart expenses={expenses} />
         </Card>
 
         <Card className="mb-5">
-          <SectionHeader title="By category" />
+          <SectionHeader title="حسب الفئة" />
           <ExpenseCategoryChart expenses={monthExpenses} />
         </Card>
 
-        <SectionHeader title="Recent expenses" />
+        <SectionHeader title="المصروفات الأخيرة" />
         <div className="space-y-2">
           {monthExpenses.length === 0 && (
             <p className="py-10 text-center text-sm text-slate-400 dark:text-slate-500">
-              No expenses yet. Tap + to log one.
+              لا توجد مصروفات بعد. اضغط + لإضافة واحدة.
             </p>
           )}
           {monthExpenses.slice(0, 20).map((e) => (
@@ -86,7 +86,7 @@ export function MoneyPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
               </p>
               <button
                 onClick={() => removeExpense(e.id)}
-                aria-label="Delete expense"
+                aria-label="حذف المصروف"
                 className="shrink-0 rounded-lg p-1.5 text-slate-300 active:text-rose-500 dark:text-slate-600"
               >
                 <Trash2 size={15} />
@@ -96,7 +96,7 @@ export function MoneyPage({ themeMode, onToggleTheme }: { themeMode: ThemeMode; 
         </div>
       </PageContainer>
 
-      <Fab onClick={() => setAddOpen(true)} label="Add expense" />
+      <Fab onClick={() => setAddOpen(true)} label="إضافة مصروف" />
       <AddExpenseSheet open={addOpen} onClose={() => setAddOpen(false)} onAdd={addExpense} />
       <BudgetLimitSheet
         open={limitOpen}

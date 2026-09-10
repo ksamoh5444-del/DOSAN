@@ -3,6 +3,7 @@ import { Sheet } from '../common/Sheet'
 import type { Priority } from '../../types'
 
 const PRIORITIES: Priority[] = ['low', 'medium', 'high']
+const PRIORITY_LABELS: Record<Priority, string> = { low: 'منخفضة', medium: 'متوسطة', high: 'مرتفعة' }
 
 export function AddTaskSheet({
   open,
@@ -28,37 +29,37 @@ export function AddTaskSheet({
   }
 
   return (
-    <Sheet open={open} onClose={onClose} title="New Task">
+    <Sheet open={open} onClose={onClose} title="مهمة جديدة">
       <div className="space-y-4">
         <input
           autoFocus
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="What do you need to do?"
+          placeholder="ما الذي تحتاج إلى فعله؟"
           className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-400 dark:border-white/10 dark:bg-white/5 dark:text-white"
         />
 
         <div>
-          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Priority</p>
+          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">الأولوية</p>
           <div className="flex gap-2">
             {PRIORITIES.map((p) => (
               <button
                 key={p}
                 onClick={() => setPriority(p)}
-                className={`flex-1 rounded-xl py-2 text-sm font-medium capitalize transition-colors ${
+                className={`flex-1 rounded-xl py-2 text-sm font-medium transition-colors ${
                   priority === p
                     ? 'bg-indigo-500 text-white'
                     : 'bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-slate-300'
                 }`}
               >
-                {p}
+                {PRIORITY_LABELS[p]}
               </button>
             ))}
           </div>
         </div>
 
         <div>
-          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Due date (optional)</p>
+          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">تاريخ الاستحقاق (اختياري)</p>
           <input
             type="date"
             value={dueDate}
@@ -72,7 +73,7 @@ export function AddTaskSheet({
           disabled={!title.trim()}
           className="w-full rounded-xl bg-indigo-500 py-3 text-sm font-semibold text-white disabled:opacity-40"
         >
-          Add Task
+          إضافة المهمة
         </button>
       </div>
     </Sheet>

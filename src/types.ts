@@ -10,13 +10,13 @@ export interface Task {
 }
 
 export const EXPENSE_CATEGORIES = [
-  'Food',
-  'Transport',
-  'Shopping',
-  'Bills',
-  'Health',
-  'Fun',
-  'Other',
+  'طعام',
+  'مواصلات',
+  'تسوق',
+  'فواتير',
+  'صحة',
+  'ترفيه',
+  'أخرى',
 ] as const
 
 export type ExpenseCategory = (typeof EXPENSE_CATEGORIES)[number]

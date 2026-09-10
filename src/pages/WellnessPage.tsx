@@ -13,20 +13,20 @@ export function WellnessPage({ themeMode, onToggleTheme }: { themeMode: ThemeMod
 
   return (
     <>
-      <Header title="Wellness" subtitle="Water & mood" themeMode={themeMode} onToggleTheme={onToggleTheme} />
+      <Header title="الصحة" subtitle="الماء والمزاج" themeMode={themeMode} onToggleTheme={onToggleTheme} />
       <PageContainer>
         <div className="mb-5">
-          <SectionHeader title="Water Intake" />
+          <SectionHeader title="شرب الماء" />
           <WaterTracker />
         </div>
 
         <div className="mb-5">
-          <SectionHeader title="Mood Check-in" />
+          <SectionHeader title="تسجيل المزاج" />
           <MoodTracker />
         </div>
 
         <div>
-          <SectionHeader title="Mood this week" />
+          <SectionHeader title="المزاج هذا الأسبوع" />
           <Card>
             <MoodTrendChart entries={entries} />
           </Card>

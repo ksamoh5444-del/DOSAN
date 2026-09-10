@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { Sheet } from '../common/Sheet'
 
 const COLORS = [
-  { name: 'Indigo', class: 'bg-indigo-500' },
-  { name: 'Emerald', class: 'bg-emerald-500' },
-  { name: 'Amber', class: 'bg-amber-500' },
-  { name: 'Rose', class: 'bg-rose-500' },
-  { name: 'Sky', class: 'bg-sky-500' },
+  { name: 'نيلي', class: 'bg-indigo-500' },
+  { name: 'زمردي', class: 'bg-emerald-500' },
+  { name: 'كهرماني', class: 'bg-amber-500' },
+  { name: 'وردي', class: 'bg-rose-500' },
+  { name: 'سماوي', class: 'bg-sky-500' },
 ]
 
 export function AddGoalSheet({
@@ -26,7 +26,7 @@ export function AddGoalSheet({
   const submit = () => {
     const targetNum = parseFloat(target)
     if (!title.trim() || !targetNum || targetNum <= 0) return
-    onAdd(title.trim(), targetNum, unit.trim() || 'times', color)
+    onAdd(title.trim(), targetNum, unit.trim() || 'مرة', color)
     setTitle('')
     setTarget('')
     setUnit('')
@@ -35,19 +35,19 @@ export function AddGoalSheet({
   }
 
   return (
-    <Sheet open={open} onClose={onClose} title="New Goal">
+    <Sheet open={open} onClose={onClose} title="هدف جديد">
       <div className="space-y-4">
         <input
           autoFocus
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="e.g. Read books, Run miles"
+          placeholder="مثال: قراءة كتب، الجري"
           className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-400 dark:border-white/10 dark:bg-white/5 dark:text-white"
         />
 
         <div className="flex gap-3">
           <div className="flex-1">
-            <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Target</p>
+            <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">الهدف</p>
             <input
               inputMode="decimal"
               value={target}
@@ -57,18 +57,18 @@ export function AddGoalSheet({
             />
           </div>
           <div className="flex-1">
-            <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Unit</p>
+            <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">الوحدة</p>
             <input
               value={unit}
               onChange={(e) => setUnit(e.target.value)}
-              placeholder="books"
+              placeholder="كتب"
               className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none focus:border-indigo-400 dark:border-white/10 dark:bg-white/5 dark:text-white"
             />
           </div>
         </div>
 
         <div>
-          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">Color</p>
+          <p className="mb-2 text-xs font-medium text-slate-500 dark:text-slate-400">اللون</p>
           <div className="flex gap-2">
             {COLORS.map((c) => (
               <button
@@ -86,7 +86,7 @@ export function AddGoalSheet({
           disabled={!title.trim() || !target}
           className="w-full rounded-xl bg-indigo-500 py-3 text-sm font-semibold text-white disabled:opacity-40"
         >
-          Add Goal
+          إضافة الهدف
         </button>
       </div>
     </Sheet>

@@ -23,7 +23,7 @@ export function Header({
         </div>
         <button
           onClick={onToggleTheme}
-          aria-label="Toggle theme"
+          aria-label="تبديل المظهر"
           className="flex size-9 items-center justify-center rounded-full bg-slate-100 text-slate-600 active:scale-95 dark:bg-white/10 dark:text-slate-300"
         >
           <Icon size={18} />

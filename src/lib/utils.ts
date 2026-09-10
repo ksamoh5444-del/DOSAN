@@ -13,21 +13,23 @@ export function isSameMonth(dateISO: string, monthKey: string): boolean {
 }
 
 export function formatCurrency(amount: number): string {
-  return new Intl.NumberFormat(undefined, {
+  return new Intl.NumberFormat('ar', {
     style: 'currency',
     currency: 'USD',
+    currencyDisplay: 'narrowSymbol',
+    numberingSystem: 'latn',
     maximumFractionDigits: 2,
   }).format(amount)
 }
 
 export function formatShortDate(dateISO: string): string {
   const d = new Date(`${dateISO}T00:00:00`)
-  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+  return d.toLocaleDateString('ar', { month: 'short', day: 'numeric', numberingSystem: 'latn' })
 }
 
 export function weekdayLabel(dateISO: string): string {
   const d = new Date(`${dateISO}T00:00:00`)
-  return d.toLocaleDateString(undefined, { weekday: 'short' })
+  return d.toLocaleDateString('ar', { weekday: 'short' })
 }
 
 export function uid(): string {

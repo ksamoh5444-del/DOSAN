@@ -16,7 +16,7 @@ export function ExpenseCategoryChart({ expenses }: { expenses: Expense[] }) {
   if (data.length === 0) {
     return (
       <div className="flex h-40 items-center justify-center text-sm text-slate-400 dark:text-slate-500">
-        No expenses this month yet
+        لا توجد مصروفات هذا الشهر بعد
       </div>
     )
   }

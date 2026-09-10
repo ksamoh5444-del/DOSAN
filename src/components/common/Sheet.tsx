@@ -17,7 +17,7 @@ export function Sheet({
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center">
       <button
-        aria-label="Close"
+        aria-label="إغلاق"
         onClick={onClose}
         className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm dark:bg-black/60"
       />
@@ -27,7 +27,7 @@ export function Sheet({
           <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{title}</h2>
           <button
             onClick={onClose}
-            aria-label="Close"
+            aria-label="إغلاق"
             className="rounded-full p-1.5 text-slate-400 hover:bg-slate-100 dark:hover:bg-white/10"
           >
             <X size={20} />
